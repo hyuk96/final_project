@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+			<!-- properties 관련 설정 -->
+	<!-- properties 사용을 위한 설정 -->
+   <bean id="propertyConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+      <property name="locations">
+         <list>
+            <value>classpath:props/*.properties</value>
+         </list>
+      </property>
+   </bean>
+	
+	<!-- DB 관련 내용 설정 -->
+	<!--  DataSource 작성(접속정보)  -->
+	<bean name="datasource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${Globlas.DriverClassName}"/>
+		<property name="url" value="${Globlas.Url}"/>
+		<property name="username" value="${Globlas.UserName}"/>
+		<property name="password" value="${Globlas.Password}"/>
+	</bean>
+	
+	
+	<!-- 마이바티스 설정 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource"/>
+		<!--  datasource 가져오기  -->
+		<property name="mapperLocations" value="classpath:kr/co/goodee/dao/*.xml"/>
+		<!--  쿼리문이 있는 장소를 지정  -->
+		<property name="environment" value="classpath:/config/pool-config.xml"/>
+		<!-- 풀네임 줄여주는 설정 -->
+		<property name="configLocation" value="classpath:/config/alias-config.xml"/>
+	</bean>
+	<!--  마이바티스를 별다른 코드 없이 사용할수 있도록 해 주는 설정  -->
+	<mybatis-spring:scan base-package="kr.co.goodee"/>
 		
 </beans>

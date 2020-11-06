@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.goodee.dao.MemberDAO">
+	<select id="login" resultType="kr.co.goodee.dto.MemberDto">
+		select * from T4_Member where MId = #{param1} and MPass = #{param2}
+	</select>
+	
+	<select id="nic" resultType="String">
+		select MNickname from T4_Member where MId = #{param1}
+	</select>
+	
+	<select id="find" resultType="kr.co.goodee.dto.MemberDto">
+		select * from T4_Member where memail = #{key} or mid = #{key}
+	</select>
+	
+	<update id="pwchange" parameterType="String">
+		update T4_Member set MPass = #{param2} where MId = #{param1}
+	</update>
+	
+	<select id="memberlist" resultType="kr.co.goodee.dto.MemberDto">
+		select * from T4_Member
+	</select>
+	
+	<select id="blaklist" resultType="kr.co.goodee.dto.MemberDto">
+		select * from t4_member m, T4_MBlacklist b where m.midx=b.midx
+	</select>
+	
+	<delete id="blakb" >
+		DELETE FROM T4_MBlacklist WHERE MIdx = #{param1}
+	</delete>
+
+	<select id="blselect" resultType="kr.co.goodee.dto.CrudDto">
+		SELECT * FROM T4_HReview where MIdx = #{param1} ORDER by HRIdx desc 
+	</select>
+	
+	<delete id="bldelete" >
+		DELETE FROM T4_HReview WHERE MIdx = #{param1}
+	</delete>
+	
+	<select id="bladdre" resultType="int">
+		select COUNT(MIdx) from T4_MBlacklist where MIdx = #{param1}
+	</select>
+	
+	<insert id="bladd">
+		insert into T4_MBlacklist(MBIdx, MIdx, MBReason) values (MBlacklist_seq.NEXTVAL, #{param1}, #{param2})
+	</insert>
+	
+	<delete id="bld" >
+		DELETE FROM T4_MBlacklist WHERE MIdx = #{param1}
+	</delete>
+	
+	<delete id="memberdelect" >
+		DELETE FROM T4_Member WHERE MIdx = #{param1}
+	</delete>
+	
+	<select id="OrPreference" resultType="kr.co.goodee.dto.Preference">
+		select * from T4_MPreference where MIdx = #{param1}
+	</select>
+	
+	<update id="NewPreference">
+		UPDATE T4_MPreference SET MP1 = #{param2}, MP2 = #{param3}, MP3 = #{param4} WHERE MIdx = #{param1}
+	</update>
+	
+	<update id="memberchange">
+		UPDATE T4_Member SET
+		<if test="param2 != null"> 
+		MNickname = #{param2}</if>
+		<if test="param2 != null and param3 != null">,</if> 
+		<if test="param3 != null">
+		MPass = #{param3}
+		</if> 
+		WHERE MIdx = #{param1}
+	</update>
+	
+
+	
+</mapper>

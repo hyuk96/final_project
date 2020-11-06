@@ -1,14 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!DOCTYPE html>
 <html>
-<head>
-	<title>Home</title>
+	<head>
+		<style>
+		</style>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
 </head>
-<body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
-</body>
+	<body>
+		<a href="memberdelect" >회원탈퇴</a><br/>
+		<a href="memberPreference" >선호도변경</a><br/>
+		<a href="logout">logout</a><br/>
+	</body>
 </html>
