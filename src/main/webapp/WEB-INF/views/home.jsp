@@ -14,5 +14,6 @@
 		<a href="memberdelect" >회원탈퇴</a><br/>
 		<a href="memberPreference" >선호도변경</a><br/>
 		<a href="logout">logout</a><br/>
+		${sc[0].SSum}
 	</body>
 </html>

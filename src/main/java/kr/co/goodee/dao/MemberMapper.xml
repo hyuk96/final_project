@@ -73,6 +73,15 @@
 		WHERE MIdx = #{param1}
 	</update>
 	
+	<select id="memberPreference" resultType="kr.co.goodee.dto.Preference">
+		select * from T4_MPreference where MIdx = #{param1}
+	</select>
+	
+	<select id="mapSeoulArea" resultType="kr.co.goodee.dto.SeoulAreaDTO">
+		select SIdx, (${param1})+(${param2})+(${param3}) as SSum, SGraph from T4_SeoulArea order by ssum desc
+	</select>
+	
+	
 
 	
 </mapper>

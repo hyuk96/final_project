@@ -111,6 +111,20 @@ public class MemberServies {
 		dao.memberchange(idx,nicname,cPw);
 		
 	}
+	public ModelAndView mapSeoulArea(String[] most) {
+		ModelAndView mav = new ModelAndView();
+		String m1 = most[0];
+		String m2 = most[1];
+		String m3 = most[2];
+		System.out.println(m1+"/"+m2+"/"+m3);
+		mav.addObject("sc", dao.mapSeoulArea(m1,m2,m3));
+		mav.setViewName("home");
+		return mav;
+	}
+	public Preference memberPreference(String user) {
+		// TODO Auto-generated method stub
+		return dao.memberPreference(user);
+	}
 	
 
 }

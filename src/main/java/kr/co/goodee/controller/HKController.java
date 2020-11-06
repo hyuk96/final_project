@@ -54,6 +54,7 @@ public class HKController {
 		if(name != "") {
 			page = "home";
 			session.setAttribute("idx", sessi[1]);
+			session.setAttribute("id", id);
 			session.setAttribute("name", sessi[0]);
 		}
 		return page;
@@ -77,6 +78,8 @@ public class HKController {
 		String id = (String) session.getAttribute("idx");
 		logger.info("id : "+id);
 		session.removeAttribute("idx");
+		session.removeAttribute("id");
+		session.removeAttribute("name");
 		return "redirect:/";
 	}
 	

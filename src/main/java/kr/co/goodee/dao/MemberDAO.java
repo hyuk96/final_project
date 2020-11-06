@@ -2,9 +2,11 @@ package kr.co.goodee.dao;
 
 import java.util.ArrayList;
 
+
 import kr.co.goodee.dto.CrudDto;
 import kr.co.goodee.dto.MemberDto;
 import kr.co.goodee.dto.Preference;
+import kr.co.goodee.dto.SeoulAreaDTO;
 
 public interface MemberDAO {
 
@@ -39,6 +41,10 @@ public interface MemberDAO {
 	void NewPreference(String idx, String m1, String m2, String m3);
 
 	void memberchange(String idx, String nicname, String cPw);
+
+	ArrayList<SeoulAreaDTO> mapSeoulArea(String m1, String m2, String m3);
+
+	Preference memberPreference(String user);
 
 
 }

@@ -32,11 +32,40 @@ public class mapController {
 	
 	
 	@RequestMapping(value = "/mapSeoulArea", method = RequestMethod.GET)
-	public String mapSeoulArea() {
-		logger.info("msg 확인");
-		logger.info("로그인 페이지 요청");
-		
-		return "loginForm";
+	public ModelAndView mapSeoulArea(HttpSession session) {
+		String user = "G";
+		if(session.getAttribute("idx")!=null) {
+			user = (String) session.getAttribute("idx"); 
+		}
+		Preference array = ms.memberPreference(user);
+		String most0 = array.getMP1();
+		String most1 = array.getMP2();
+		String most2 = array.getMP3();
+		System.out.println(most0+" / "+most1+" / "+most2);
+		String[] most = {most0,most1,most2};
+		if(!user.equals("G")) {
+			for(int i = 0; i <most.length; i++) {
+				String z = "";
+				String[] so = {"1.5","1","0.5"};
+				if(most[i].equals("우선1")) {
+					z = "SPark";
+				}else if(most[i].equals("우선2")){
+					z = "SSubway";
+				}else if(most[i].equals("우선3")){
+					z = "SHospital";
+				}else {
+					System.out.println(i+"번째 저장못함");
+				}
+				most[i] = z+"*"+so[i];
+				System.out.println(most[i]);
+			}
+		}else {
+			most[0] = "SPark";
+			most[1] = "SSubway";
+			most[2] = "SHospital";
+		}
+		System.out.println(most[0]+" / "+most[1]+" / "+most[2]);
+		return ms.mapSeoulArea(most);
 	}
 
 	

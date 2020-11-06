@@ -1,7 +1,5 @@
 package kr.co.goodee.dto;
 
-import java.sql.Date;
-
 public class Preference {
 	
     private int MIdx;
