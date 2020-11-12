@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		설정 값을 properties 에서 불러올 경우 
+		사용자 입장에서 설정 변경을 위해서는 properties 파일만 건들면 된다.
+	 -->
+	<bean name="datasource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${Globlas.DriverClassName}"/>
+		<property name="url" value="${Globlas.Url}"/>
+		<property name="username" value="${Globlas.UserName}"/>
+		<property name="password" value="${Globlas.Password}"/>
+	</bean>
+</beans>
