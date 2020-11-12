@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	"-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"	
+>
+<!-- 이 xml 을 어떤 interface 하고 연결 할 것인가 -->
+<mapper namespace="kr.co.goodee.dao.searchDAO">
+	
+	<!-- WHERE 태그로 인해서 if 문에 해당되는 내용이 없을 경우 WHERE 구문을 실행하지 않는다. -->
+	<select id="areaCall" parameterType="hashmap" resultType="hashmap">
+		SELECT id FROM member where id LIKE '%'||#{keyword}||'%'	
+	</select>
+
+	<!-- <select id="aptCall" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM member	
+	</select> -->
+	
+	<!-- <select id="subwayCall" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM member	
+	</select> -->
+	
+	<insert id="bookmark" parameterType="String">
+		INSERT INTO test(midx,hidx) VALUES(#{param1},#{param2})
+	</insert>
+	
+	<select id= "compare" resultType="kr.co.goodee.dto.compareDTO">
+		SELECT * FROM test_apt 
+	</select>
+	
+	<select id="compareAjax" parameterType="hashmap" resultType="hashmap">
+		SELECT h_name FROM test_apt where idx = #{param1} or idx = #{param2}
+	</select>
+	
+	
+</mapper>
