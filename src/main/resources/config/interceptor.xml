@@ -20,7 +20,7 @@
 			<mvc:mapping path="/detail*"/>
 			
 			<!-- 이동 시킬 클래스 지정 -->
-			<bean class="kr.co.goodee.servies.LonginInterceptor"></bean>
+			<bean class="kr.co.goodee.service.LonginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 

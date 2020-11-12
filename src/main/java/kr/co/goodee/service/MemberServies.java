@@ -1,4 +1,4 @@
-package kr.co.goodee.servies;
+package kr.co.goodee.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;

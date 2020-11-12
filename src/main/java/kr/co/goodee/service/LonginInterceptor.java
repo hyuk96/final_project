@@ -1,4 +1,4 @@
-package kr.co.goodee.servies;
+package kr.co.goodee.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

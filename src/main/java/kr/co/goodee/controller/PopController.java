@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class PopController {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	@Autowired kr.co.goodee.servies.MemberServies ms;
+	@Autowired kr.co.goodee.service.MemberServies ms;
 	
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

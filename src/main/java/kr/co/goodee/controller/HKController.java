@@ -18,7 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.goodee.dto.MemberDto;
 import kr.co.goodee.dto.Preference;
-import kr.co.goodee.servies.MemberServies;
+import kr.co.goodee.service.MemberServies;
+
 
 /**
  * Handles requests for the application home page.
@@ -30,7 +31,7 @@ public class HKController {
 	@Autowired MemberServies ms;
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/l", method = RequestMethod.GET)
 	public String home() {
 		logger.info("msg 확인");
 		logger.info("로그인 페이지 요청");
@@ -121,7 +122,7 @@ public class HKController {
 		return page;
 	}
 	
-	@RequestMapping(value = "member", method = RequestMethod.GET)
+	@RequestMapping(value = "/member", method = RequestMethod.GET)
 	public @ResponseBody ArrayList<MemberDto> member() {
 		logger.info("회원정보리스트");
 		return ms.memberlist();
@@ -129,7 +130,7 @@ public class HKController {
 	
 	
 	
-	@RequestMapping(value = "blaklist", method = RequestMethod.GET)
+	@RequestMapping(value = "/blaklist", method = RequestMethod.GET)
 	public @ResponseBody ArrayList<MemberDto> blaklist() {
 		logger.info("블랙");
 		return ms.blaklist();

@@ -1,39 +1,74 @@
 package kr.co.goodee.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-/**
- * Handles requests for the application home page.
- */
+import kr.co.goodee.dto.likeDTO;
+import kr.co.goodee.service.HomeService;
+
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/asd", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+	@Autowired HomeService service;
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(Model model) {
+	
+		return "result";
+	}
+	
+	
+	@RequestMapping(value = "/listCall", method = RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> listCall(@RequestParam HashMap<String, String> params){
+		System.out.println("리스트보기요청");
+		logger.info("리스트보기 : "+params);
+		return service.listCall(params);
+	}
+	
+	@RequestMapping(value = "/bookmarkForm", method = RequestMethod.GET)
+	public String bookmarkForm(){
+		return "bookmarkForm";
+	}
+	
+	@RequestMapping(value = "/bookmark", method = RequestMethod.GET)
+	public ModelAndView bookmark(/*@RequestParam String params*/){
+		String midx="1";
+		String hidx="4";
+		logger.info("즐겨찾기요청");
+		logger.info("params : "+midx+"/"+hidx);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		return service.bookmark(midx,hidx);
+	}
+	
+	@RequestMapping(value = "/compare", method = RequestMethod.GET)
+	public ModelAndView compareForm(){
 		
-		String formattedDate = dateFormat.format(date);
+		return service.compare();
+	}
+	
+	@RequestMapping(value = "/compareAjax", method = RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> compareAjax(@RequestParam HashMap<String, String> params){
 		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
+		logger.info("비교하기 아작스요청");
+		logger.info("params " +params);
+		return service.compareAjax(params);
 	}
 	
 }

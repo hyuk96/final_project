@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.goodee.dto.MemberDto;
 import kr.co.goodee.dto.Preference;
-import kr.co.goodee.servies.MemberServies;
+import kr.co.goodee.service.MemberServies;
 
 
 /**
