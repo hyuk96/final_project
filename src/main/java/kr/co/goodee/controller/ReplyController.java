@@ -1,9 +1,7 @@
 package kr.co.goodee.controller;
 
 import java.util.HashMap;
-import java.util.Locale;
 
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.goodee.service.ReplyService;
 
@@ -23,8 +19,7 @@ import kr.co.goodee.service.ReplyService;
 public class ReplyController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	@Autowired
-	ReplyService service;
+	@Autowired ReplyService service;
 
 	// 시작페이지
 	@RequestMapping(value = "/", method = RequestMethod.GET)
