@@ -21,9 +21,6 @@ import kr.co.goodee.dto.Preference;
 import kr.co.goodee.service.MemberServies;
 
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class mapLController {
 	

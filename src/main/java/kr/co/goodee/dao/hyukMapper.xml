@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.spring.dao.CrudInter"> -->
+<mapper namespace="kr.co.goodee.dao.ReplyDAO">
+
+	<!-- ↓↓↓ 창혁 -->
+	<select id="replylist" resultType="kr.co.goodee.dto.BoardDTO">
+		SELECT idx, user_name,
+		reg_date, content FROM bbs
+	</select>
+
+	<insert id="write">
+		INSERT INTO bbs(idx, user_name, content, red_date
+		)VALUES(
+		bbs_seq.NEXTVAL, #{param1}, #{param2}, SYSDATE)
+	</insert>
+
+	<delete id="replydel">
+		DELETE FROM bbs WHERE idx = #{param1}
+	</delete>
+	<!-- ↑↑↑ 창혁 -->
+
+	<!-- ↓↓↓ 현일 -->
+	<select id="rank" resultType="kr.co.goodee.dto.BoardDTO">
+		SELECT n.hname,h.hmoney FROM
+		T4_HOUSE h,T4_HNAME n ORDER BY hmoney DESC
+	</select>
+
+	<select id="ranker" resultType="kr.co.goodee.dto.BoardDTO">
+		SELECT SNAME, SPARK, SSUBWAY
+		,SHOSPITAL , SPARK*0.5+SSUBWAY*1+SHOSPITAL*1.5 AS "total" FROM
+		T4_SEOULAREA ORDER BY "total" DESC
+	</select>
+	<!-- ↑↑↑ 현일 -->
+</mapper>
