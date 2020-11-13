@@ -28,13 +28,12 @@ public class HomeController {
 	
 	@Autowired HomeService service;
 	
-	/* 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/result", method = RequestMethod.GET)
 	public String home(Model model) {
 	
 		return "result";
 	}
-	*/
+
 	
 	
 	@RequestMapping(value = "/listCall", method = RequestMethod.GET)
