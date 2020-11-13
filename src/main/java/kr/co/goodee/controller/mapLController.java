@@ -25,7 +25,7 @@ import kr.co.goodee.service.MemberServies;
  * Handles requests for the application home page.
  */
 @Controller
-public class mapController {
+public class mapLController {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Autowired MemberServies ms;
