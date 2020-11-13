@@ -24,11 +24,13 @@
 		</tr>
 		<c:forEach items="${list}"  var ="dto">
 			<tr>
-				<td>${dto.idx}</td>
-				<td>${dto.subject}</td>
+				<td>${dto.HRIdx}</td>
+				<td>${dto.HRContent}</td>
 				<td><form action="bldelete">
-				<input type="text" name="idx" value="${dto.idx}" readonly="readonly">
-				<input type="text" name="name" value="${dto.user_name}" readonly="readonly">
+				<input type="hidden" name="idx" value="${dto.MIdx}" readonly="readonly">
+				<input type="hidden" name="ridx" value="${dto.HRIdx}" readonly="readonly">
+				${dto.HRNickname}
+				<input type="hidden" name="name" value="${dto.HRNickname}" readonly="readonly">
 				<input type="submit" value="삭제">
 				</form></td>
 			</tr>

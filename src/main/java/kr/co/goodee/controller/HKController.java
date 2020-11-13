@@ -31,7 +31,7 @@ public class HKController {
 	@Autowired MemberServies ms;
 	
 	
-	@RequestMapping(value = "/l", method = RequestMethod.GET)
+	@RequestMapping(value = "/loginform", method = RequestMethod.GET)
 	public String home() {
 		logger.info("msg 확인");
 		logger.info("로그인 페이지 요청");
@@ -53,7 +53,7 @@ public class HKController {
 		String[] sessi = name.split(",");
 		String page = "loginForm";
 		if(name != "") {
-			page = "home";
+			page = "main";
 			session.setAttribute("idx", sessi[1]);
 			session.setAttribute("id", id);
 			session.setAttribute("name", sessi[0]);

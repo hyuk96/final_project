@@ -26,7 +26,7 @@ public interface MemberDAO {
 	
 	ArrayList<CrudDto> blselect(String id);
 
-	int bldelete(String idx);
+	int bldelete(String ridx);
 
 	int bladdre(String string);
 

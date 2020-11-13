@@ -146,10 +146,10 @@
                     var str = "";
                     for(var i=0; i < d.length; i++){
     					console.log(d);
-    					console.log(d[i]);
+    					console.log(d[i].midx);
                     	str += '<tr class="mlf"><td><a href ="#" onclick="window.open(&#34;list?id='
                     	+d[i].midx+'&#34;, &#34;_blank&#34;, &#34;width=500px,height=500px&#34;)" id="'+d[i].mid+'">'
-                    	+d[i].mid+'</a></td>'
+                    	+d[i].mid+d[i].midx+'</a></td>'
                     	+'<td>'+d[i].mdate+'</td>'
 						+'<td>추가사유<select id = "'+d[i].midx+'"name = "Reason"><option value="null">사유선택</option>'
 						+'<option value="욕설">욕설</option><option value="광고">광고</option>'

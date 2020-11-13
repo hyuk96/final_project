@@ -68,8 +68,8 @@ public class MemberServies {
 		return mav;
 		
 	}
-	public int bldelete(String idx) {
-		return dao.bldelete(idx);
+	public int bldelete(String ridx) {
+		return dao.bldelete(ridx);
 	}
 	public String bladd(String midx) {
 		

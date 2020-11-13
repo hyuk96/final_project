@@ -27,13 +27,14 @@ public class PopController {
 	}
 	
 	@RequestMapping(value = "/bldelete", method = RequestMethod.GET)
-	public String bldelete(Model model, @RequestParam String idx, @RequestParam String name) {
+	public String bldelete(Model model, @RequestParam String idx, @RequestParam String ridx, @RequestParam String name) {
 		logger.info("삭제할 개시글 : " + idx);
+		logger.info("삭제할 개시글 : " + ridx);
 		logger.info("삭제할 개시글 : " + name);
-		String z = "redirect:/list?id="+name;
+		String z = "redirect:/list?id="+idx;
 		logger.info("글보기 : " + z);
 		String msg ="삭제 실패";
-		if(ms.bldelete(idx)>0) {
+		if(ms.bldelete(ridx)>0) {
 			 msg ="삭제 성공";
 		}
 		model.addAttribute("msg", msg);

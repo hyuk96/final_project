@@ -5,8 +5,8 @@ import java.sql.Date;
 public class CrudDto {
 	
     private int HRIdx;
-    private int MIdx;
-    private int HIdx;
+    private int MIdx;	
+	private int HIdx;
     private int SIdx;
     private Date HRDate;
     private String HRContent;

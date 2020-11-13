@@ -53,7 +53,6 @@ public class HomeController {
 		String hidx="4";
 		logger.info("즐겨찾기요청");
 		logger.info("params : "+midx+"/"+hidx);
-		
 		return service.bookmark(midx,hidx);
 	}
 	

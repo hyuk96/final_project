@@ -27,6 +27,11 @@
 		<!-- 풀네임 줄여주는 설정 -->
 		<property name="configLocation" value="classpath:/config/alias-config.xml"/>
 	</bean>
+	<!-- 마이바티스 템플릿 사용 설정 -->
+   <bean id="myBatisMapper" class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg index="0" ref="sqlSessionFactory"/>
+   </bean>
+	
 	<!--  마이바티스를 별다른 코드 없이 사용할수 있도록 해 주는 설정  -->
 	<mybatis-spring:scan base-package="kr.co.goodee"/>
 		

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.spring.dao.CrudInter"> -->
+<mapper namespace="kr.co.goodee.dao.ReplyDAO">
+
+   <!-- ↓↓↓ 창혁 -->
+   <select id="replylist" resultType="kr.co.goodee.dto.BoardDTO">
+	SELECT rnum, hridx, hrcontent, hrnickname ,hrdate FROM (SELECT ROW_NUMBER() OVER(ORDER BY hrdate DESC) AS rnum, hridx, hrcontent, hrnickname,hrdate FROM t4_hreview)
+    WHERE rnum BETWEEN #{param1} AND #{param2}
+   </select>
+
+   <select id="replypage" resultType="kr.co.goodee.dto.BoardDTO">
+	SELECT rnum, hridx, hrcontent, hrnickname ,hrdate FROM (SELECT ROW_NUMBER() OVER(ORDER BY hrdate DESC) AS rnum, hridx, hrcontent, hrnickname,hrdate FROM t4_hreview)
+    WHERE rnum BETWEEN #{param1} AND #{param2}
+   </select>
+
+   <insert id="write">
+      INSERT INTO t4_hreview(hridx, midx, hidx,sidx, hrcontent, hrnickname
+      )VALUES(
+      hreview_seq.NEXTVAL, #{param1}, #{param3},1, #{param2}, #{param4})
+   </insert>
+
+   <delete id="replydel">
+      DELETE FROM bbs WHERE idx = #{param1}
+   </delete>
+   <!-- ↑↑↑ 창혁 -->
+
+</mapper>

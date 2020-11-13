@@ -35,7 +35,7 @@
 	</select>
 	
 	<delete id="bldelete" >
-		DELETE FROM T4_HReview WHERE MIdx = #{param1}
+		DELETE FROM T4_HReview WHERE hridx = #{param1}
 	</delete>
 	
 	<select id="bladdre" resultType="int">
