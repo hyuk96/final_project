@@ -7,17 +7,14 @@
 <mapper namespace="kr.co.goodee.dao.searchDAO">
 	
 	<!-- WHERE 태그로 인해서 if 문에 해당되는 내용이 없을 경우 WHERE 구문을 실행하지 않는다. -->
-	<select id="areaCall" parameterType="hashmap" resultType="hashmap">
-		SELECT id FROM member where id LIKE '%'||#{keyword}||'%'	
-	</select>
 
-	<!-- <select id="aptCall" parameterType="hashmap" resultType="hashmap">
-		SELECT * FROM member	
-	</select> -->
+	<select id="aptCall" parameterType="hashmap" resultType="hashmap">
+		SELECT HNAME FROM T4_HOUSE where HNAME LIKE '%'||#{keyword}||'%'
+	</select>
 	
-	<!-- <select id="subwayCall" parameterType="hashmap" resultType="hashmap">
-		SELECT * FROM member	
-	</select> -->
+	<select id="subwayCall" parameterType="hashmap" resultType="hashmap">
+		SELECT SUBNAME FROM T4_SUBWAY where SUBNAME LIKE '%'||#{keyword}||'%'
+	</select>
 	
 	<insert id="bookmark" parameterType="String">
 		INSERT INTO test(midx,hidx) VALUES(#{param1},#{param2})

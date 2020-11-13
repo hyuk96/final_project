@@ -12,7 +12,7 @@
 <body>
 
 	<fieldset>
-		<input id ='keyword' type="text" name="keyword" placeholder="구 / 아파트 / 지하철 역으로 검색"/>
+		<input id ='keyword' type="text" name="keyword" placeholder="아파트 / 지하철 역으로 검색"/>
 		<button onclick="listCall()">search</button>
 	</fieldset>
 		<table>
@@ -36,13 +36,26 @@
 				//drawlist(d.list);
 				//$("#boardList").html(d.list);
 				//console.log(d.list[1].ID);
-				if(d.list[0]==null){
+				if(d.list[0]==null || d.sublist[0]==null){
 					alert('검색결과가 없습니다');
 				}else{
                 var str = "";
 	                for(var i=0; i < d.list.length; i++){
-	                	console.log(d.list[i].ID);
-	                   	str += '<tr><td>'+d.list[i].ID+'</td></tr>';
+	                	//console.log(d.list[i].HX);
+	                	//console.log(d.list[i].HY);
+	                	console.log(d.list[i].HNAME);
+	                	//console.log(d.sublist[i].SUBNAME);
+	                	//console.log(d.list[i]);
+	                   	str += '<tr><td>'+d.list[i].HNAME+'</td></tr>';                   
+	              	}
+	                
+	                for(var i=0; i < d.sublist.length; i++){
+	                	//console.log(d.list[i].HX);
+	                	//console.log(d.list[i].HY);
+	                	//console.log(d.list[i].HNAME);
+	                	console.log(d.sublist[i].SUBNAME);
+	 
+	                   	str += '<tr><td>'+"지하철  "+d.sublist[i].SUBNAME+"역"+'</td></tr>';
 	              	}
 	              $('#ml').empty();
 	              $('#ml').append(str);

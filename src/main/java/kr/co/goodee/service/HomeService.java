@@ -25,9 +25,10 @@ public class HomeService {
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		String keyword = params.get("keyword");
 		logger.info("keyword : "+keyword);
-		result.put("list", dao.areaCall(keyword));
-		//result.put("list", dao.aptCall(keyword));
-		//result.put("list", dao.subwayCall(keyword));
+		result.put("sublist", dao.subwayCall(keyword));
+		//result.put("list", dao.areaCall(keyword));
+		result.put("list", dao.aptCall(keyword));
+		
 		return result;
 	}
 
