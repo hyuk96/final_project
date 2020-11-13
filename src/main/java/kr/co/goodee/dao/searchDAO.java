@@ -8,7 +8,6 @@ import kr.co.goodee.dto.likeDTO;
 
 public interface searchDAO {
 
-	//ArrayList<searchDAO> areaCall(String keyword);
 	
 	ArrayList<searchDAO> aptCall(String keyword);
 	
@@ -18,6 +17,8 @@ public interface searchDAO {
 
 	ArrayList<compareDTO> compare();
 
-	ArrayList<searchDAO> subwayCall(String keyword);
+	//ArrayList<searchDAO> subwayCall(String keyword);
+
+	ArrayList<searchDAO> coordinate(String keyword);
 
 }

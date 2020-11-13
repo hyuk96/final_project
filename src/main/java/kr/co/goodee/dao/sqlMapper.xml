@@ -9,11 +9,15 @@
 	<!-- WHERE 태그로 인해서 if 문에 해당되는 내용이 없을 경우 WHERE 구문을 실행하지 않는다. -->
 
 	<select id="aptCall" parameterType="hashmap" resultType="hashmap">
-		SELECT HNAME FROM T4_HOUSE where HNAME LIKE '%'||#{keyword}||'%'
+		SELECT distinct HNAME FROM T4_HOUSE where HNAME LIKE '%'||#{keyword}||'%'
 	</select>
 	
-	<select id="subwayCall" parameterType="hashmap" resultType="hashmap">
-		SELECT SUBNAME FROM T4_SUBWAY where SUBNAME LIKE '%'||#{keyword}||'%'
+	<!-- <select id="subwayCall" parameterType="hashmap" resultType="hashmap">
+		SELECT distinct SUBNAME FROM T4_SUBWAY where SUBNAME LIKE '%'||#{keyword}||'%'
+	</select> -->
+	
+	<select id="coordinate" parameterType="hashmap" resultType="hashmap">
+		SELECT distinct hX,hy FROM T4_HOUSE where HNAME LIKE '%'||#{keyword}||'%'
 	</select>
 	
 	<insert id="bookmark" parameterType="String">
