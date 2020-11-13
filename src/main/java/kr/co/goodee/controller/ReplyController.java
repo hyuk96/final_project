@@ -15,14 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.goodee.dao.ReplyDAO;
 import kr.co.goodee.service.ReplyService;
 
 @Controller
 public class ReplyController {
 
    private Logger logger = LoggerFactory.getLogger(this.getClass());
-   @Autowired
-   ReplyService service;
+   @Autowired ReplyService service;
+   ReplyDAO inter = null;
 
    // 시작페이지
    @RequestMapping(value = "/start", method = RequestMethod.GET)

@@ -19,11 +19,20 @@
                 width: 700px;
             }
 
-            #m{
-                border: 1px solid black;
+			#mdiv{
+				border: 1px solid black;
                 height: 50px;
                 width: 100px;
                 text-align: center;
+			}
+			
+            #m{
+                
+                height: 50px;
+                width: 100px;
+                text-align: center;
+                text-decoration: none;
+
             }
             #b{
                 border: 1px solid black;
@@ -52,13 +61,17 @@
             form{
             
             }
+            
+            #adminlogout{
+            	float: right;
+            }
         </style>
     </head>
     <body>
-        <div id="head"><a href="#">홈바홈바</a><a href="logout">logout</a></div>
+        <div id="head"><a href="#">홈바홈바</a></div><div id="adminlogout"><a href="logout">logout</a></div>
         
         <div id="body">
-            <a href="#" onclick="membershow()"><div id="m">memberlist</div><br/></a>
+            <div id="mdiv"><a href="#" id="m" onclick="membershow()">memberlist<br/></a></div>
             <a href="#" onclick="blackshow()"><div id="b">blacklist</div><br/></a>
             <div id="list">
                     <table id="ml">
@@ -88,18 +101,7 @@
                           <th>블랙리스트<br/>사유 </th>
                           <th>블랙리스트<br/>해제</th>
                       </tr>
-                          <tr>
-                              <td>창혁몬</td>
-                              <td>2020년 10월 27일</td>
-                              <td>기만</td>
-                              <td><input type="checkbox" name="blacklist" value="black1"></td>
-                          </tr>
-                          <tr>
-                              <td>창혁몬</td>
-                              <td>2020-10-27</td>
-                              <td>욕설</td>
-                              <td><input type="checkbox" name="blacklist" value="black2"></td>
-                          </tr>
+
                   </table>
             </div>
         </div>

@@ -7,7 +7,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-		<!-- DB 관련 내용 설정 -->
+	<!-- DB 관련 내용 설정 -->
 	<!--  DataSource 작성(접속정보)  -->
 	<bean name="datasource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.DriverSpy"/>
@@ -24,13 +24,16 @@
 		<property name="mapperLocations" value="classpath:kr/co/goodee/dao/*.xml"/>
 		<!--  쿼리문이 있는 장소를 지정  -->
 		<property name="environment" value="classpath:/config/pool-config.xml"/>
-		<!-- 풀네임 줄여주는 설정 -->
-		<property name="configLocation" value="classpath:/config/alias-config.xml"/>
+		
 	</bean>
+
 	<!-- 마이바티스 템플릿 사용 설정 -->
    <bean id="myBatisMapper" class="org.mybatis.spring.SqlSessionTemplate">
       <constructor-arg index="0" ref="sqlSessionFactory"/>
    </bean>
+   
+   
+
 	
 	<!--  마이바티스를 별다른 코드 없이 사용할수 있도록 해 주는 설정  -->
 	<mybatis-spring:scan base-package="kr.co.goodee"/>
